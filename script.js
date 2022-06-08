@@ -6,7 +6,6 @@ const divide = (x, y) => x / y;
 let oper;
 let x;
 let y;
-let displayValue;
 
 const operate = function(oper, x, y) {
     if(oper === '+') return add(x, y);
@@ -22,21 +21,19 @@ const buttons = document.querySelectorAll('button').forEach(button => {
 
         if(button.textContent === 'dlt') {
             display.textContent = display.textContent.substring(0, (display.textContent.length - 1));
-            displayValue = display.textContent;
-            console.log(displayValue);
-            console.log(x);
-            console.log(oper);
-            console.log(y);
+
+            console.log(`oper is: ${oper}`);
+            console.log(`x is: ${x}`);
+            console.log(`y is: ${y}`);
 
         } else if(button.textContent === 'clr') {
             display.textContent = '';
             x = '';
             y = '';
-            displayValue = display.textContent;
-            console.log(displayValue);
-            console.log(x);
-            console.log(oper);
-            console.log(y);
+
+            console.log(`oper is: ${oper}`);
+            console.log(`x is: ${x}`);
+            console.log(`y is: ${y}`);
 
         } else if((button.textContent === '+') || (button.textContent === '-') || (button.textContent === '*') || (button.textContent === '/')) {
             
@@ -49,12 +46,10 @@ const buttons = document.querySelectorAll('button').forEach(button => {
             };
 
             display.textContent = '';
-            displayValue = display.textContent;
             
-            console.log(displayValue);
-            console.log(x);
-            console.log(oper);
-            console.log(y);
+            console.log(`oper is: ${oper}`);
+            console.log(`x is: ${x}`);
+            console.log(`y is: ${y}`);
         
         } else if(button.textContent === '=') {
 
@@ -66,15 +61,12 @@ const buttons = document.querySelectorAll('button').forEach(button => {
 
             display.textContent = `${operate(oper, x, y)}`;
 
-            console.log(displayValue);
-            console.log(x);
-            console.log(oper);
-            console.log(y);
+            console.log(`oper is: ${oper}`);
+            console.log(`x is: ${x}`);
+            console.log(`y is: ${y}`);
 
         } else {
             display.textContent += button.textContent;
-            displayValue = display.textContent;
-            console.log(displayValue);
         }; 
     });
 });
