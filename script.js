@@ -28,24 +28,25 @@ const buttons = document.querySelectorAll('button').forEach(button => {
 
         } else if(button.textContent === 'clr') {
             display.textContent = '';
-            x = '';
-            y = '';
+            x = undefined;
+            y = undefined;
 
             console.log(`oper is: ${oper}`);
             console.log(`x is: ${x}`);
             console.log(`y is: ${y}`);
 
         } else if((button.textContent === '+') || (button.textContent === '-') || (button.textContent === '*') || (button.textContent === '/')) {
-            
-            oper = button.textContent;
-
             if(x === undefined) {
                 x = display.textContent;
-            } else {
+                display.textContent = '';
+                oper = button.textContent;
+            } else if(y === undefined) {
                 y = display.textContent;
+                display.textContent = `${operate(oper, x, y)}`;
+                x = display.textContent;
+                y = undefined;
+                oper = button.textContent;
             };
-
-            display.textContent = '';
             
             console.log(`oper is: ${oper}`);
             console.log(`x is: ${x}`);
@@ -55,18 +56,22 @@ const buttons = document.querySelectorAll('button').forEach(button => {
 
             if(x === undefined) {
                 x = display.textContent;
-            } else {
+            } else if (y === undefined) {
                 y = display.textContent;
             };
 
             display.textContent = `${operate(oper, x, y)}`;
+            x = display.textContent;
+            y = undefined;
 
             console.log(`oper is: ${oper}`);
             console.log(`x is: ${x}`);
             console.log(`y is: ${y}`);
 
         } else {
+
             display.textContent += button.textContent;
+            
         }; 
     });
 });
