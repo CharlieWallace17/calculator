@@ -6,6 +6,7 @@ const divide = (x, y) => x / y;
 let oper;
 let x;
 let y;
+let lastResult;
 
 const operate = function(oper, x, y) {
     if(oper === '+') return add(x, y);
@@ -22,56 +23,60 @@ const buttons = document.querySelectorAll('button').forEach(button => {
         if(button.textContent === 'dlt') {
             display.textContent = display.textContent.substring(0, (display.textContent.length - 1));
 
-            console.log(`oper is: ${oper}`);
-            console.log(`x is: ${x}`);
-            console.log(`y is: ${y}`);
-
         } else if(button.textContent === 'clr') {
             display.textContent = '';
             x = undefined;
             y = undefined;
-
-            console.log(`oper is: ${oper}`);
-            console.log(`x is: ${x}`);
-            console.log(`y is: ${y}`);
+            oper = undefined;
+            lastResult = undefined;
 
         } else if((button.textContent === '+') || (button.textContent === '-') || (button.textContent === '*') || (button.textContent === '/')) {
-            if(x === undefined) {
+
+            if(x === undefined && y === undefined && lastResult !== undefined && oper !== undefined) {
+                x = lastResult;
+                y = display.textContent;
+                display.textContent = operate(oper, x, y);
+                lastResult = display.textContent;
+                x = undefined;
+                y = undefined;
+                oper = button.textContent;
+            } else if(x === undefined) {
                 x = display.textContent;
                 display.textContent = '';
                 oper = button.textContent;
             } else if(y === undefined) {
                 y = display.textContent;
-                display.textContent = `${operate(oper, x, y)}`;
-                x = display.textContent;
+                display.textContent = operate(oper, x, y);
+                lastResult = display.textContent;
+                x = undefined;
                 y = undefined;
                 oper = button.textContent;
             };
-            
-            console.log(`oper is: ${oper}`);
-            console.log(`x is: ${x}`);
-            console.log(`y is: ${y}`);
         
         } else if(button.textContent === '=') {
 
-            if(x === undefined) {
-                x = display.textContent;
-            } else if (y === undefined) {
+            if(x === undefined && y === undefined && lastResult !== undefined && oper !== undefined) {
+                x = lastResult;
                 y = display.textContent;
-            };
+                display.textContent = operate(oper, x, y);
+            } else if(y === undefined) {
+            
+            y = display.textContent;
 
-            display.textContent = `${operate(oper, x, y)}`;
-            x = display.textContent;
+            display.textContent = operate(oper, x, y);
+            lastResult = display.textContent;
+            x = undefined;
             y = undefined;
-
-            console.log(`oper is: ${oper}`);
-            console.log(`x is: ${x}`);
-            console.log(`y is: ${y}`);
+            };
 
         } else {
 
+            if(display.textContent === lastResult) {
+                display.textContent = '';
+                display.textContent += button.textContent;
+            } else {
             display.textContent += button.textContent;
-            
+            };
         }; 
     });
 });
