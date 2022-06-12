@@ -9,22 +9,35 @@ let y;
 let lastResult;
 
 const operate = function(oper, x, y) {
-    if(oper === '+') {
+    
+    if(y === '0') {
+        alert('Nuh-uh-uh!');
+        return clear();
+
+    } else if(oper === '+') {
         let sum = add(x, y);
         return (sum.toString().length >= 12) ? sum.toExponential() : sum;
-    };
-    if(oper === '-') {
+
+    } else if(oper === '-') {
         let sub = subtract(x, y);
         return (sub.toString().length >= 12) ? sub.toExponential() : sub;
-    };
-    if(oper === '*') {
+
+    } else if(oper === '*') {
         let mult = multiply(x, y);
         return (mult.toString().length >= 12) ? mult.toExponential() : mult;
-    };
-    if(oper === '/') {
+
+    } else if(oper === '/') {
         let divi = divide(x, y);
         return (divi.toString().length >= 12) ? divi.toExponential() : divi;
     };
+};
+
+const clear = function() {
+    display.textContent = '';
+    x = undefined;
+    y = undefined;
+    oper = undefined;
+    lastResult = undefined;
 };
 
 const display = document.querySelector('.display');
@@ -36,11 +49,7 @@ const buttons = document.querySelectorAll('button').forEach(button => {
             display.textContent = display.textContent.substring(0, (display.textContent.length - 1));
 
         } else if(button.textContent === 'clr') {
-            display.textContent = '';
-            x = undefined;
-            y = undefined;
-            oper = undefined;
-            lastResult = undefined;
+            clear();
 
         } else if((button.textContent === '+') || (button.textContent === '-') || (button.textContent === '*') || (button.textContent === '/')) {
 
