@@ -9,10 +9,22 @@ let y;
 let lastResult;
 
 const operate = function(oper, x, y) {
-    if(oper === '+') return add(x, y);
-    if(oper === '-') return subtract(x, y); 
-    if(oper === '*') return multiply(x, y); 
-    if(oper === '/') return divide(x, y); 
+    if(oper === '+') {
+        let sum = add(x, y);
+        return (sum.toString().length >= 12) ? sum.toExponential() : sum;
+    };
+    if(oper === '-') {
+        let sub = subtract(x, y);
+        return (sub.toString().length >= 12) ? sub.toExponential() : sub;
+    };
+    if(oper === '*') {
+        let mult = multiply(x, y);
+        return (mult.toString().length >= 12) ? mult.toExponential() : mult;
+    };
+    if(oper === '/') {
+        let divi = divide(x, y);
+        return (divi.toString().length >= 12) ? divi.toExponential() : divi;
+    };
 };
 
 const display = document.querySelector('.display');
