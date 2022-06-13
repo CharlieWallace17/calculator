@@ -94,11 +94,23 @@ const buttons = document.querySelectorAll('button').forEach(button => {
                 oper = undefined;
             };
 
-        } else {
+        } else if(button.textContent === '.') {
 
+            if(display.textContent.includes('.') === false) {
+                if(display.textContent === lastResult) {
+                    display.textContent = '';
+                    display.textContent += button.textContent;
+
+                } else {
+                display.textContent += button.textContent;
+                };
+            };
+
+        } else {
             if(display.textContent === lastResult) {
                 display.textContent = '';
                 display.textContent += button.textContent;
+
             } else {
             display.textContent += button.textContent;
             };
@@ -157,7 +169,19 @@ const keys = document.addEventListener('keydown', event => {
             oper = undefined;
         };
 
-    } else if(event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9' || event.key === '.') {
+    } else if(event.key === '.') {
+
+        if(display.textContent.includes('.') === false) {
+            if(display.textContent === lastResult) {
+                display.textContent = '';
+                display.textContent += event.key;
+
+            } else {
+            display.textContent += event.key;
+            };
+        };
+
+    } else if(event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9') {
 
         if(display.textContent === lastResult) {
             display.textContent = '';
@@ -168,8 +192,3 @@ const keys = document.addEventListener('keydown', event => {
         };
     }; 
  });
-
-// document.addEventListener('keydown', (event) => {
-//     console.log("event.key = " + event.key + "  " + "event.code = " + event.code);
-// });
-
