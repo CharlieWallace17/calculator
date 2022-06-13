@@ -44,7 +44,6 @@ const display = document.querySelector('.display');
 
 const buttons = document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', event => {
-
         if(button.textContent === 'dlt') {
             display.textContent = display.textContent.substring(0, (display.textContent.length - 1));
 
@@ -61,10 +60,12 @@ const buttons = document.querySelectorAll('button').forEach(button => {
                 x = undefined;
                 y = undefined;
                 oper = button.textContent;
+
             } else if(x === undefined) {
                 x = display.textContent;
                 display.textContent = '';
                 oper = button.textContent;
+
             } else if(y === undefined) {
                 y = display.textContent;
                 display.textContent = operate(oper, x, y);
@@ -80,14 +81,17 @@ const buttons = document.querySelectorAll('button').forEach(button => {
                 x = lastResult;
                 y = display.textContent;
                 display.textContent = operate(oper, x, y);
-            } else if(y === undefined) {
-            
-            y = display.textContent;
+                x = undefined;
+                y = undefined;
+                oper = undefined;
 
-            display.textContent = operate(oper, x, y);
-            lastResult = display.textContent;
-            x = undefined;
-            y = undefined;
+            } else if(y === undefined) {
+                y = display.textContent;
+                display.textContent = operate(oper, x, y);
+                lastResult = display.textContent;
+                x = undefined;
+                y = undefined;
+                oper = undefined;
             };
 
         } else {
@@ -140,6 +144,9 @@ const keys = document.addEventListener('keydown', event => {
             x = lastResult;
             y = display.textContent;
             display.textContent = operate(oper, x, y);
+            x = undefined;
+            y = undefined;
+            oper = undefined;
 
         } else if(y === undefined) {
             y = display.textContent;
@@ -147,7 +154,8 @@ const keys = document.addEventListener('keydown', event => {
             lastResult = display.textContent;
             x = undefined;
             y = undefined;
-            };
+            oper = undefined;
+        };
 
     } else if(event.key === '0' || event.key === '1' || event.key === '2' || event.key === '3' || event.key === '4' || event.key === '5' || event.key === '6' || event.key === '7' || event.key === '8' || event.key === '9' || event.key === '.') {
 
