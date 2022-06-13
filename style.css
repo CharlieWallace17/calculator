@@ -1,16 +1,74 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url('digital-7.ttf');
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:black;
+    background-image:
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+    radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+
 .display {
-    height: 60px;
-    width: 180px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 100px;
+    width: 400px;
     border: 2px solid black;
-    padding: 0px 5px;
-    font-size: 50px;
+    border-radius: 10px;
+    padding: 0px 5px 10px 5px;
+    font-family: 'digital-7';
+    font-size: 70px;
     text-align: right;
+    margin: 10px;
+    color:chartreuse;
+    background-color: black;
+    
+}
+
+.shell {
+    display: flex;
+    width: 450px;
+    border: 5px solid aquamarine;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color:teal;
 }
 
 button {
-    height: 60px;
-    width: 60px;
+    min-height: 100px;
+    min-width: 100px;
+    border: 5px solid black;
     border-radius: 5px;
-    font-size: 30px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
     font-weight: bold;
+    color:aquamarine;
+    background-color: darkblue;
+    margin: 10px;
+}
+
+.btns {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.row5 button,
+.row6 button,
+.spec {
+    color:black;
+    background-color: salmon;
 }
