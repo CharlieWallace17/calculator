@@ -1,4 +1,4 @@
-const add = (x, y) => parseInt(x) + parseInt(y);
+const add = (x, y) => parseFloat(x) + parseFloat(y);
 const subtract = (x, y) => x - y;
 const multiply = (x, y) => x * y;
 const divide = (x, y) => x / y;
